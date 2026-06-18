@@ -1,25 +1,19 @@
 <!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Dashboard Ofertas GHL — 2026-06-18 15:27</title><style>
-:root{
-  --navy:#023859;--mid:#2A5E95;--blue:#6399BA;--ink:#1a2533;--gray:#6b7785;
-  --line:#e4e9f0;--bg:#eef2f7;--white:#fff;
-  --ok:#1a7a4a;--ok-bg:#e7f5ec;--amber:#b87503;--amber-bg:#fdf3e3;
-  --red:#b0281a;--red-bg:#fbeae8;--muted:#aab4c0;
-}
+<title>Dashboard Ofertas GHL — 2026-06-18 16:33</title><style>
+:root{--navy:#023859;--mid:#2A5E95;--blue:#6399BA;--ink:#1a2533;--gray:#6b7785;--line:#e4e9f0;--bg:#eef2f7;--white:#fff;
+--ok:#1a7a4a;--ok-bg:#e7f5ec;--amber:#b87503;--amber-bg:#fdf3e3;--red:#b0281a;--red-bg:#fbeae8;--muted:#aab4c0;}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);font-size:13px;line-height:1.5}
 .wrap{max-width:1280px;margin:0 auto;padding:0 24px 64px}
-/* Header */
-.hdr{background:linear-gradient(135deg,#023859 0%,#04507e 100%);color:#fff;padding:52px 0 48px;margin-bottom:0}
+.hdr{background:linear-gradient(135deg,#023859 0%,#04507e 100%);color:#fff;padding:52px 0 48px}
 .hdr-in{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px}
 .hdr h1{font-family:'DM Serif Display',serif;font-size:42px;font-weight:400;line-height:1.12}
 .hdr h1 b{color:#8fc1de;font-weight:400}
 .hdr .meta{text-align:right;font-size:12px;color:#a9cbe0;line-height:1.7}
 .hdr .meta b{color:#fff;font-weight:600}
-/* KPI cards */
 .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:48px 0 28px;position:relative;z-index:5}
-.kpi{background:var(--white);border-radius:12px;padding:18px 18px 16px;box-shadow:0 6px 22px rgba(2,56,89,.10);border-top:3px solid var(--line)}
+.kpi{background:var(--white);border-radius:12px;padding:18px;box-shadow:0 6px 22px rgba(2,56,89,.10);border-top:3px solid var(--line)}
 .kpi .v{font-size:38px;font-weight:700;line-height:1;letter-spacing:-1px}
 .kpi .l{font-size:10.5px;color:var(--gray);text-transform:uppercase;letter-spacing:.7px;margin-top:7px;font-weight:600}
 .kpi.k-act{border-top-color:var(--navy)}.kpi.k-act .v{color:var(--navy)}
@@ -27,16 +21,21 @@ body{font-family:'DM Sans',-apple-system,Segoe UI,sans-serif;background:var(--bg
 .kpi.k-del{border-top-color:var(--red)}.kpi.k-del .v{color:var(--red)}
 .kpi.k-chg{border-top-color:var(--amber)}.kpi.k-chg .v{color:var(--amber)}
 .kpi.k-scan{border-top-color:var(--blue)}.kpi.k-scan .v{color:var(--blue)}
-/* Section titles */
 .sec-title{font-size:15px;font-weight:700;color:var(--navy);margin:30px 0 14px;display:flex;align-items:center;gap:9px}
 .sec-title .tag{font-size:10px;font-weight:600;color:var(--gray);background:var(--white);border:1px solid var(--line);padding:2px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
-/* Master table */
+/* language sub-tabs */
+.langtabs{display:inline-flex;gap:4px;background:#e2e9f1;padding:4px;border-radius:10px;margin-bottom:16px}
+.langtab{padding:7px 18px;font-size:12.5px;font-weight:600;color:var(--gray);background:none;border:none;border-radius:7px;cursor:pointer;transition:all .15s}
+.langtab:hover{color:var(--navy)}
+.langtab.active{background:var(--white);color:var(--navy);box-shadow:0 1px 4px rgba(2,56,89,.12)}
+.langview{display:none}.langview.active{display:block}
 .tbl-card{background:var(--white);border-radius:12px;border:1px solid var(--line);overflow:hidden;box-shadow:0 2px 10px rgba(2,56,89,.05)}
 table.master{width:100%;border-collapse:collapse;font-size:12.5px}
 .master thead th{background:#f6f9fc;color:var(--mid);font-size:10px;text-transform:uppercase;letter-spacing:.6px;font-weight:700;text-align:left;padding:12px 14px;border-bottom:2px solid var(--line);white-space:nowrap}
 .master tbody td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
 .master tbody tr:last-child td{border-bottom:none}
 .master tbody tr:hover{background:#f9fbfd}
+.row-missing{background:#fcfcfd}
 .m-offer{font-weight:600;color:var(--navy);font-size:12.5px}
 .m-hotel{font-size:11px;color:var(--gray);margin-top:1px}
 .cat-pill{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
@@ -46,27 +45,20 @@ table.master{width:100%;border-collapse:collapse;font-size:12.5px}
 .date-main{font-weight:600;color:var(--ink);font-size:12px}
 .date-sub{font-size:10.5px;color:var(--gray)}
 .estado{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.3px}
-.e-new{background:var(--ok-bg);color:var(--ok)}
-.e-chg{background:var(--amber-bg);color:var(--amber)}
-.e-keep{background:#eef1f5;color:var(--gray)}
+.e-new{background:var(--ok-bg);color:var(--ok)}.e-chg{background:var(--amber-bg);color:var(--amber)}.e-keep{background:#eef1f5;color:var(--gray)}
 .e-dot{width:6px;height:6px;border-radius:50%;background:currentColor}
 .ver-link{display:inline-flex;align-items:center;gap:5px;color:var(--mid);font-weight:600;font-size:11.5px;text-decoration:none;white-space:nowrap;border:1px solid var(--line);padding:5px 11px;border-radius:7px;transition:all .15s}
 .ver-link:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
-/* Hotel tabs */
 .hotel-bar{display:flex;gap:4px;margin:30px 0 0;border-bottom:2px solid var(--line);overflow-x:auto}
 .hotel-tab{padding:11px 20px;font-size:13px;font-weight:600;color:var(--gray);background:none;border:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .15s}
-.hotel-tab:hover{color:var(--navy)}
-.hotel-tab.active{color:var(--navy);border-bottom-color:var(--navy)}
+.hotel-tab:hover{color:var(--navy)}.hotel-tab.active{color:var(--navy);border-bottom-color:var(--navy)}
 .hotel-panel{display:none;padding-top:22px}.hotel-panel.active{display:block}
-/* Sub-tabs (per offer) */
 .subtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
 .subtab{display:flex;align-items:center;gap:7px;padding:8px 14px;font-size:12px;font-weight:600;color:var(--gray);background:var(--white);border:1.5px solid var(--line);border-radius:9px;cursor:pointer;transition:all .15s}
 .subtab:hover{border-color:var(--blue);color:var(--navy)}
 .subtab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
 .subtab .nd{width:7px;height:7px;border-radius:50%;background:var(--ok)}
-.subtab.active .nd{box-shadow:0 0 0 2px rgba(255,255,255,.4)}
 .detail{display:none}.detail.active{display:block}
-/* Detail card */
 .dcard{background:var(--white);border-radius:14px;border:1px solid var(--line);overflow:hidden;box-shadow:0 3px 14px rgba(2,56,89,.06)}
 .dcard-top{padding:22px 26px;background:linear-gradient(135deg,#f6f9fc,#eef4f9);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
 .dcard-top h3{font-size:20px;color:var(--navy);font-weight:700;line-height:1.25}
@@ -79,272 +71,247 @@ table.master{width:100%;border-collapse:collapse;font-size:12.5px}
 .dfield{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:13px 16px}
 .dfield .fl{font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px}
 .dfield .fv{font-size:13.5px;color:var(--ink);font-weight:600}
-.dfield .fv.sm{font-size:12px;font-weight:500}
 .ddesc{font-size:13.5px;color:#33414f;line-height:1.65;background:#f8fafc;border-left:3px solid var(--blue);border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:18px}
 .dfoot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .btn-primary{display:inline-flex;align-items:center;gap:7px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:11px 20px;border-radius:9px;transition:all .15s}
 .btn-primary:hover{background:#04507e}
+.na-card{background:var(--white);border:1px dashed var(--line);border-radius:14px;padding:46px 26px;text-align:center;color:var(--gray)}
+.na-card .na-ico{font-size:30px;margin-bottom:10px}
+.na-card b{color:var(--ink)}
 .foot-note{text-align:center;color:var(--gray);font-size:11px;margin-top:34px;line-height:1.7}
 @media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.dgrid{grid-template-columns:1fr}}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"></head><body>
 <div class="hdr"><div class="hdr-in">
   <h1>Dashboard de Ofertas <b>· 2 propiedades</b></h1>
-  <div class="meta">Último escaneo: <b>2026-06-18 15:27</b><br>Análisis anterior: —<br>Frecuencia: <b>Semanal</b></div>
+  <div class="meta">Último escaneo: <b>2026-06-18 16:33</b><br>Análisis anterior: —<br>Frecuencia: <b>Semanal</b></div>
 </div></div>
 <div class="wrap">
   <div class="kpis">
-    <div class="kpi k-act"><div class="v">7</div><div class="l">Ofertas activas</div></div>
-    <div class="kpi k-new"><div class="v">7</div><div class="l">Nuevas esta semana</div></div>
+    <div class="kpi k-act"><div class="v">5</div><div class="l">Ofertas activas</div></div>
+    <div class="kpi k-new"><div class="v">5</div><div class="l">Nuevas esta semana</div></div>
     <div class="kpi k-del"><div class="v">0</div><div class="l">Eliminadas esta semana</div></div>
     <div class="kpi k-chg"><div class="v">0</div><div class="l">Con cambios</div></div>
     <div class="kpi k-scan"><div class="v">1</div><div class="l">Escaneos realizados</div></div></div>
 
-  <div class="sec-title">Consolidado de ofertas activas <span class="tag">7 ofertas</span></div>
-  
-    <div class="tbl-card">
-      <table class="master">
-        <thead><tr>
-          <th>Oferta / Hotel</th><th>Categoría</th><th>Descuento / Beneficio</th>
-          <th>Vigencia de la oferta</th><th>Tarifa desde</th><th>Estado</th><th>Detalle</th>
-        </tr></thead>
-        <tbody><tr>
-      <td><div class="m-offer">Fin de Semana Perfecto GHL Capital</div><div class="m-hotel">GHL Hotel Capital</div></td>
-      <td><span class="cat-pill" style="background:#f0eafb;color:#5a2d9a">Fin de Semana</span></td>
-      <td><span class="disc-pill">15%</span></td>
-      <td><div class="date-main">18/06/2026 &rarr; 31/03/2028</div><div class="date-sub">Oferta válida entre estas fechas</div></td>
-      <td><div class="date-main">351.000 COP</div><div class="date-sub">Tarifa desde</div></td>
-      <td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td>
-      <td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/tarifa-fin-de-semana-1524/" target="_blank">Ver oferta &rarr;</a></td>
-    </tr><tr>
-      <td><div class="m-offer">Máximo Ahorro Garantizado GHL Capital</div><div class="m-hotel">GHL Hotel Capital</div></td>
-      <td><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span></td>
-      <td><span class="disc-pill">20%</span></td>
-      <td><div class="date-main">18/07/2026 &rarr; 31/03/2028</div><div class="date-sub">Oferta válida entre estas fechas</div></td>
-      <td><div class="date-main">360.000 COP</div><div class="date-sub">Tarifa desde</div></td>
-      <td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td>
-      <td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/compra-anticipada-30-dias-1527/" target="_blank">Ver oferta &rarr;</a></td>
-    </tr><tr>
-      <td><div class="m-offer">Tu Recompensa por Planear GHL Capital</div><div class="m-hotel">GHL Hotel Capital</div></td>
-      <td><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span></td>
-      <td><span class="disc-pill">15%</span></td>
-      <td><div class="date-main">03/07/2026 &rarr; 31/03/2028</div><div class="date-sub">Oferta válida entre estas fechas</div></td>
-      <td><div class="date-main">360.000 COP</div><div class="date-sub">Tarifa desde</div></td>
-      <td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td>
-      <td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/compra-anticipada-15-dias-1528/" target="_blank">Ver oferta &rarr;</a></td>
-    </tr><tr>
-      <td><div class="m-offer">¡Lánzate a Bogotá! GHL Capital</div><div class="m-hotel">GHL Hotel Capital</div></td>
-      <td><span class="cat-pill" style="background:#fdecea;color:#b0281a">Ultimo Minuto</span></td>
-      <td><span class="disc-pill">15%</span></td>
-      <td><div class="date-main">18/06/2026 &rarr; 31/03/2028</div><div class="date-sub">Oferta válida entre estas fechas</div></td>
-      <td><div class="date-main">351.000 COP</div><div class="date-sub">Tarifa desde</div></td>
-      <td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td>
-      <td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/ultimo-minuto-3-dias-1529/" target="_blank">Ver oferta &rarr;</a></td>
-    </tr><tr>
-      <td><div class="m-offer">Quédate Más, Paga Menos GHL Capital</div><div class="m-hotel">GHL Hotel Capital</div></td>
-      <td><span class="cat-pill" style="background:#e8f5ee;color:#0f6e56">Minima Estadia</span></td>
-      <td><span class="disc-pill">15%</span></td>
-      <td><div class="date-main">18/06/2026 &rarr; 31/03/2028</div><div class="date-sub">Oferta válida entre estas fechas</div></td>
-      <td><div class="date-main">390.000 COP</div><div class="date-sub">Tarifa desde</div></td>
-      <td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td>
-      <td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/minima-estadia-3-noches-1531/" target="_blank">Ver oferta &rarr;</a></td>
-    </tr><tr>
-      <td><div class="m-offer">Compra Anticipada 7 días Hotel Sonesta Bogotá</div><div class="m-hotel">Sonesta Bogotá</div></td>
-      <td><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span></td>
-      <td><span class="disc-pill">15%</span></td>
-      <td><div class="date-main">25/06/2026 &rarr; 31/03/2028</div><div class="date-sub">Oferta válida entre estas fechas</div></td>
-      <td><div class="date-main">356.446 COP</div><div class="date-sub">Tarifa desde</div></td>
-      <td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td>
-      <td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/ghlsonbogota/compra-anticipada-7-dias-1528/" target="_blank">Ver oferta &rarr;</a></td>
-    </tr><tr>
-      <td><div class="m-offer">Minima estadía 3 Noches Hotel Sonesta Bogotá</div><div class="m-hotel">Sonesta Bogotá</div></td>
-      <td><span class="cat-pill" style="background:#e8f5ee;color:#0f6e56">Minima Estadia</span></td>
-      <td><span class="disc-pill">7%</span></td>
-      <td><div class="date-main">18/06/2026 &rarr; 31/03/2030</div><div class="date-sub">Oferta válida entre estas fechas</div></td>
-      <td><div class="date-main">356.446 COP</div><div class="date-sub">Tarifa desde</div></td>
-      <td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td>
-      <td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/ghlsonbogota/minima-estadia-3-noches-1531/" target="_blank">Ver oferta &rarr;</a></td>
-    </tr></tbody>
-      </table>
-    </div>
+  <div class="sec-title">Consolidado de ofertas activas <span class="tag">5 ofertas</span></div>
+  <div class="langtabs"><button class="langtab active" onclick="switchMasterLang('es',this)">🇪🇸 Español</button><button class="langtab " onclick="switchMasterLang('en',this)">🇬🇧 English</button></div>
+  <div class="langview active" id="master-es"><div class="tbl-card"><table class="master"><thead><tr><th>Oferta / Hotel</th><th>Categoría</th><th>Descuento / Beneficio</th><th>Vigencia de la oferta</th><th>Tarifa desde</th><th>Estado</th><th>Detalle</th></tr></thead><tbody><tr><td><div class="m-offer">Compra Anticipada 60 días Arsenal Hotel</div><div class="m-hotel">Arsenal Hotel</div></td><td><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span></td><td><span class="disc-pill">12%</span></td><td><div class="date-main">17/08/2026 &rarr; 22/12/2027</div><div class="date-sub">Oferta válida entre</div></td><td><div class="date-main">661.200 COP</div><div class="date-sub">Tarifa desde</div></td><td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td><td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/arsenal/compra-anticipada-60-dias-1526/" target="_blank">Ver &rarr;</a></td></tr><tr><td><div class="m-offer">Compra Anticipada 30 días Arsenal Hotel</div><div class="m-hotel">Arsenal Hotel</div></td><td><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span></td><td><span class="disc-pill">10%</span></td><td><div class="date-main">18/06/2026 &rarr; 31/05/2027</div><div class="date-sub">Oferta válida entre</div></td><td><div class="date-main">556.340 COP</div><div class="date-sub">Tarifa desde</div></td><td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td><td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/arsenal/compra-anticipada-30-dias-1527/" target="_blank">Ver &rarr;</a></td></tr><tr><td><div class="m-offer">Minima estadía 3 Noches Arsenal Hotel</div><div class="m-hotel">Arsenal Hotel</div></td><td><span class="cat-pill" style="background:#e8f5ee;color:#0f6e56">Minima Estadia</span></td><td><span class="disc-pill">18%</span></td><td><div class="date-main">18/06/2026 &rarr; 31/05/2027</div><div class="date-sub">Oferta válida entre</div></td><td><div class="date-main">556.340 COP</div><div class="date-sub">Tarifa desde</div></td><td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td><td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/arsenal/minima-estadia-5-noches-1532/" target="_blank">Ver &rarr;</a></td></tr><tr><td><div class="m-offer">La Magia de Cartagena Incluye una Noche Gratis Arsenal Hotel</div><div class="m-hotel">Arsenal Hotel</div></td><td><span class="cat-pill" style="background:#fef0e7;color:#a8480b">Promo Especial</span></td><td><span class="muted">Sin valor especificado</span></td><td><div class="date-main">18/06/2026 &rarr; 30/11/2026</div><div class="date-sub">Oferta válida entre</div></td><td><div class="date-main">556.340 COP</div><div class="date-sub">Tarifa desde</div></td><td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td><td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/arsenal/cartagena-noche-gratis-promo/" target="_blank">Ver &rarr;</a></td></tr><tr><td><div class="m-offer">Experiencia dos noches en Makani Hotel Makani Luxury Wanderlust</div><div class="m-hotel">Makani Luxury Wanderlust</div></td><td><span class="cat-pill" style="background:#fef0e7;color:#a8480b">Promo Especial</span></td><td><span class="muted">Sin valor especificado</span></td><td><div class="date-main"><span class="muted">No publicada</span></div><div class="date-sub">Oferta válida entre</div></td><td><div class="date-main"><span class="muted">&mdash;</span></div><div class="date-sub">Tarifa desde</div></td><td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td><td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/makani/experiencia-dos-noches-en-436152641/" target="_blank">Ver &rarr;</a></td></tr></tbody></table></div></div><div class="langview " id="master-en"><div class="tbl-card"><table class="master"><thead><tr><th>Oferta / Hotel</th><th>Categoría</th><th>Descuento / Beneficio</th><th>Vigencia de la oferta</th><th>Tarifa desde</th><th>Estado</th><th>Detalle</th></tr></thead><tbody><tr><td><div class="m-offer">Arsenal Hotel, Early Booking 60 days</div><div class="m-hotel">Arsenal Hotel</div></td><td><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span></td><td><span class="disc-pill">12%</span></td><td><div class="date-main">17/08/2026 &rarr; 22/12/2027</div><div class="date-sub">Oferta válida entre</div></td><td><div class="date-main"><span class="muted">&mdash;</span></div><div class="date-sub">Tarifa desde</div></td><td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td><td><a class="ver-link" href="https://www.ghlhoteles.com/en/promotions/arsenal/early-booking-60-days/" target="_blank">Ver &rarr;</a></td></tr><tr><td><div class="m-offer">Arsenal Hotel, Early Booking 30 Days</div><div class="m-hotel">Arsenal Hotel</div></td><td><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span></td><td><span class="disc-pill">10%</span></td><td><div class="date-main">18/06/2026 &rarr; 31/05/2027</div><div class="date-sub">Oferta válida entre</div></td><td><div class="date-main"><span class="muted">&mdash;</span></div><div class="date-sub">Tarifa desde</div></td><td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td><td><a class="ver-link" href="https://www.ghlhoteles.com/en/promotions/arsenal/early-booking-30-days/" target="_blank">Ver &rarr;</a></td></tr><tr><td><div class="m-offer">Arsenal Hotel, Minimum 3 Nights</div><div class="m-hotel">Arsenal Hotel</div></td><td><span class="cat-pill" style="background:#e8f5ee;color:#0f6e56">Minima Estadia</span></td><td><span class="disc-pill">18%</span></td><td><div class="date-main">18/06/2026 &rarr; 31/05/2027</div><div class="date-sub">Oferta válida entre</div></td><td><div class="date-main"><span class="muted">&mdash;</span></div><div class="date-sub">Tarifa desde</div></td><td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td><td><a class="ver-link" href="https://www.ghlhoteles.com/en/promotions/arsenal/minimum-mights/" target="_blank">Ver &rarr;</a></td></tr><tr class="row-missing"><td><div class="m-offer">La Magia de Cartagena Incluye una Noche Gratis Arsenal Hotel</div><div class="m-hotel">Arsenal Hotel</div></td><td><span class="cat-pill" style="background:#fef0e7;color:#a8480b">Promo Especial</span></td><td colspan="4" class="muted" style="text-align:center">No disponible en inglés (página 404 en la web)</td><td><span class="muted">&mdash;</span></td></tr><tr><td><div class="m-offer">Hotel Makani Luxury Wanderlust, Season Escape</div><div class="m-hotel">Makani Luxury Wanderlust</div></td><td><span class="cat-pill" style="background:#fef0e7;color:#a8480b">Promo Especial</span></td><td><span class="muted">Sin valor especificado</span></td><td><div class="date-main">18/06/2026 &rarr; 31/07/2026</div><div class="date-sub">Oferta válida entre</div></td><td><div class="date-main"><span class="muted">&mdash;</span></div><div class="date-sub">Tarifa desde</div></td><td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td><td><a class="ver-link" href="https://www.ghlhoteles.com/en/promotions/makani/season-escape-436152641/" target="_blank">Ver &rarr;</a></td></tr></tbody></table></div></div>
 
-  <div class="sec-title">Detalle por hotel <span class="tag">Información desglosada</span></div>
-  <div class="hotel-bar"><button class="hotel-tab active" onclick="switchHotel('ghl_hotel_capital',this)">GHL Hotel Capital</button><button class="hotel-tab " onclick="switchHotel('sonesta_bogot_',this)">Sonesta Bogotá</button></div>
-  <div class="hotel-panel active" id="hp-ghl_hotel_capital">
-          <div class="subtabs"><button class="subtab active" onclick="switchDetail('ghl_hotel_capital','det-ghl_hotel_capital-1524',this)"><span class=nd></span>FIN DE SEMANA PERFECTO</button><button class="subtab " onclick="switchDetail('ghl_hotel_capital','det-ghl_hotel_capital-1527',this)"><span class=nd></span>MÁXIMO AHORRO GARANTIZADO</button><button class="subtab " onclick="switchDetail('ghl_hotel_capital','det-ghl_hotel_capital-1528',this)"><span class=nd></span>TU RECOMPENSA POR PLANEAR</button><button class="subtab " onclick="switchDetail('ghl_hotel_capital','det-ghl_hotel_capital-1529',this)"><span class=nd></span>¡LÁNZATE A BOGOTÁ!</button><button class="subtab " onclick="switchDetail('ghl_hotel_capital','det-ghl_hotel_capital-1531',this)"><span class=nd></span>QUÉDATE MÁS, PAGA MENOS</button></div><div class="detail active" id="det-ghl_hotel_capital-1524">
+  <div class="sec-title">Detalle por hotel <span class="tag">Comparativo ES / EN</span></div>
+  <div class="hotel-bar"><button class="hotel-tab active" onclick="switchHotel('arsenal_hotel',this)">Arsenal Hotel</button><button class="hotel-tab " onclick="switchHotel('makani_luxury_wanderlust',this)">Makani Luxury Wanderlust</button></div>
+  <div class="hotel-panel active" id="hp-arsenal_hotel"><div class="langtabs"><button class="langtab active" onclick="switchHotelLang('arsenal_hotel','es',this)">🇪🇸 Español</button><button class="langtab " onclick="switchHotelLang('arsenal_hotel','en',this)">🇬🇧 English</button></div><div class="langview active" id="hl-arsenal_hotel-es"><div class="subtabs" id="subs-arsenal_hotel-es"><button class="subtab active" onclick="switchOffer('arsenal_hotel-es','det-arsenal_hotel-es-1526',this)"><span class=nd></span>COMPRA ANTICIPADA 60 DÍAS</button><button class="subtab " onclick="switchOffer('arsenal_hotel-es','det-arsenal_hotel-es-1527',this)"><span class=nd></span>COMPRA ANTICIPADA 30 DÍAS</button><button class="subtab " onclick="switchOffer('arsenal_hotel-es','det-arsenal_hotel-es-1532',this)"><span class=nd></span>MINIMA ESTADÍA 3 NOCHES</button><button class="subtab " onclick="switchOffer('arsenal_hotel-es','det-arsenal_hotel-es-33af0f',this)"><span class=nd></span>LA MAGIA DE CARTAGENA INCLUYE UNA NOCHE GRATIS</button></div><div class="detail active" id="det-arsenal_hotel-es-1526">
   <div class="dcard">
     <div class="dcard-top">
-      <div>
-        <h3>Fin de Semana Perfecto GHL Capital</h3>
-        <div class="titular">PLAN FIN DE SEMANA: TU DESCANSO CON 15% MENOS</div>
-        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#f0eafb;color:#5a2d9a">Fin de Semana</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
+      <div><h3>Compra Anticipada 60 días Arsenal Hotel</h3>
+        <div class="titular">RESERVA ANTICIPADA 60 DÍAS 12% OFF</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
       </div>
-      <div class="right"><div class="disc-big">15%</div><div class="disc-lbl">Descuento</div></div>
+      <div class="right"><div class="disc-big">12%</div><div class="disc-lbl">Descuento</div></div>
     </div>
     <div class="dcard-body">
-      <div class="ddesc">El descanso que mereces, al precio que te mereces. Escápate este fin de semana al GHL Hotel Capital y disfruta todo el confort, la gastronomía y la ubicación privilegiada de Bogotá con un 15% de descuento exclusivo. Porque el fin de semana perfecto empieza con la reserva correcta.</div>
+      <div class="ddesc">GHL Arsenal Hotel anticípate 60 días a tu fecha de estadía y adquiere un 12% de descuento, hasta 30% de descuento si te registras en ghlpluss</div>
       <div class="dgrid">
-        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">18/06/2026 &rarr; 31/03/2028</div></div>
-        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Fin de Semana</div></div>
-        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">351.000 COP</div></div>
-        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">15%</div></div>
+        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">17/08/2026 &rarr; 22/12/2027</div></div>
+        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Compra Anticipada</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">661.200 COP</div></div>
+        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">12%</div></div>
       </div>
       <div class="dfoot">
-        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1524</b> · Fuente: web oficial GHL</div>
-        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/tarifa-fin-de-semana-1524/" target="_blank">Ver esta oferta en la web &rarr;</a>
+        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1526</b> · Fuente: web oficial GHL</div>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/arsenal/compra-anticipada-60-dias-1526/" target="_blank">Ver esta oferta en la web &rarr;</a>
       </div>
     </div>
   </div>
-</div><div class="detail " id="det-ghl_hotel_capital-1527">
+</div><div class="detail " id="det-arsenal_hotel-es-1527">
   <div class="dcard">
     <div class="dcard-top">
-      <div>
-        <h3>Máximo Ahorro Garantizado GHL Capital</h3>
-        <div class="titular">PLANIFICADOR INTELIGENTE: ANTICIPA +30 DÍAS Y AHORRA 20%</div>
+      <div><h3>Compra Anticipada 30 días Arsenal Hotel</h3>
+        <div class="titular">EARLY BOOKING 30 DAYS 10% OFF</div>
         <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
       </div>
-      <div class="right"><div class="disc-big">20%</div><div class="disc-lbl">Descuento</div></div>
+      <div class="right"><div class="disc-big">10%</div><div class="disc-lbl">Descuento</div></div>
     </div>
     <div class="dcard-body">
-      <div class="ddesc">Nuestro descuento más grande del año, solo para quienes reservan con 30 días de anticipación. Un 20% off en tu estadía en el GHL Hotel Capital, más dinero en tu bolsillo para disfrutar todo lo que Bogotá tiene para ti. Reserva hoy, ahorra más. Así de simple.</div>
+      <div class="ddesc">GHL Arsenal Hotel anticípate 30 días a tu fecha de estadía y adquiere un 10% de descuento, si te registras en ghlpluss obtienes un descuento adicional.</div>
       <div class="dgrid">
-        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">18/07/2026 &rarr; 31/03/2028</div></div>
+        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">18/06/2026 &rarr; 31/05/2027</div></div>
         <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Compra Anticipada</div></div>
-        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">360.000 COP</div></div>
-        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">20%</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">556.340 COP</div></div>
+        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">10%</div></div>
       </div>
       <div class="dfoot">
         <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1527</b> · Fuente: web oficial GHL</div>
-        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/compra-anticipada-30-dias-1527/" target="_blank">Ver esta oferta en la web &rarr;</a>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/arsenal/compra-anticipada-30-dias-1527/" target="_blank">Ver esta oferta en la web &rarr;</a>
       </div>
     </div>
   </div>
-</div><div class="detail " id="det-ghl_hotel_capital-1528">
+</div><div class="detail " id="det-arsenal_hotel-es-1532">
   <div class="dcard">
     <div class="dcard-top">
-      <div>
-        <h3>Tu Recompensa por Planear GHL Capital</h3>
-        <div class="titular">ANTICIPACIÓN +15 DÍAS: PLANEA Y AHORRA 15%</div>
-        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
-      </div>
-      <div class="right"><div class="disc-big">15%</div><div class="disc-lbl">Descuento</div></div>
-    </div>
-    <div class="dcard-body">
-      <div class="ddesc">Planear tiene sus ventajas, y esta es una muy buena. Reserva tu estadía en el GHL Hotel Capital con 15 días de anticipación y recibe un 15% de descuento como recompensa por tu buena decisión. Planeaste bien. Ahora relájate, lo demás corre por nuestra cuenta.</div>
-      <div class="dgrid">
-        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">03/07/2026 &rarr; 31/03/2028</div></div>
-        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Compra Anticipada</div></div>
-        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">360.000 COP</div></div>
-        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">15%</div></div>
-      </div>
-      <div class="dfoot">
-        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1528</b> · Fuente: web oficial GHL</div>
-        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/compra-anticipada-15-dias-1528/" target="_blank">Ver esta oferta en la web &rarr;</a>
-      </div>
-    </div>
-  </div>
-</div><div class="detail " id="det-ghl_hotel_capital-1529">
-  <div class="dcard">
-    <div class="dcard-top">
-      <div>
-        <h3>¡Lánzate a Bogotá! GHL Capital</h3>
-        <div class="titular">ÚLTIMO MINUTO: DECIDE RÁPIDO Y AHORRA 15%</div>
-        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#fdecea;color:#b0281a">Ultimo Minuto</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
-      </div>
-      <div class="right"><div class="disc-big">15%</div><div class="disc-lbl">Descuento</div></div>
-    </div>
-    <div class="dcard-body">
-      <div class="ddesc">¿Plan de último momento? ¡Mejor! Reserva hoy, llega hoy y vive Bogotá como se debe: sin itinerarios rígidos, con todo el confort del GHL Hotel Capital y un 15% de descuento para que la aventura espontánea salga aún mejor. Las mejores historias empiezan con una reserva de último minuto.</div>
-      <div class="dgrid">
-        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">18/06/2026 &rarr; 31/03/2028</div></div>
-        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Ultimo Minuto</div></div>
-        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">351.000 COP</div></div>
-        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">15%</div></div>
-      </div>
-      <div class="dfoot">
-        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1529</b> · Fuente: web oficial GHL</div>
-        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/ultimo-minuto-3-dias-1529/" target="_blank">Ver esta oferta en la web &rarr;</a>
-      </div>
-    </div>
-  </div>
-</div><div class="detail " id="det-ghl_hotel_capital-1531">
-  <div class="dcard">
-    <div class="dcard-top">
-      <div>
-        <h3>Quédate Más, Paga Menos GHL Capital</h3>
-        <div class="titular">4 NOCHES, 15% MENOS. MÁS TIEMPO PARA VIVIR BOGOTÁ</div>
+      <div><h3>Minima estadía 3 Noches Arsenal Hotel</h3>
+        <div class="titular">MÍNIMO 3 NOCHES - 18% DE DESCUENTO</div>
         <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#e8f5ee;color:#0f6e56">Minima Estadia</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
       </div>
-      <div class="right"><div class="disc-big">15%</div><div class="disc-lbl">Descuento</div></div>
+      <div class="right"><div class="disc-big">18%</div><div class="disc-lbl">Descuento</div></div>
     </div>
     <div class="dcard-body">
-      <div class="ddesc">Entre más tiempo pases en el GHL Hotel Capital, más ahorras. Reserva 4 noches o más y obtén un 15% de descuento en toda tu estadía. Más comodidad, más Bogotá, más experiencias, y tu bolsillo lo nota. ¡No dejes pasar esta oportunidad!</div>
+      <div class="ddesc">GHL Arsenal Hotel Aprovecha tu estadia por minimo tres noches. Una experiencia exclusiva. Un 18% de descuento. Vive Cartagena con elegancia en cada detalle y prolonga tu descanso con beneficios que marcan la diferencia, y si te registras en ghlpluss obtienes un descuento adicional</div>
       <div class="dgrid">
-        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">18/06/2026 &rarr; 31/03/2028</div></div>
+        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">18/06/2026 &rarr; 31/05/2027</div></div>
         <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Minima Estadia</div></div>
-        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">390.000 COP</div></div>
-        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">15%</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">556.340 COP</div></div>
+        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">18%</div></div>
       </div>
       <div class="dfoot">
-        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1531</b> · Fuente: web oficial GHL</div>
-        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/minima-estadia-3-noches-1531/" target="_blank">Ver esta oferta en la web &rarr;</a>
+        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1532</b> · Fuente: web oficial GHL</div>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/arsenal/minima-estadia-5-noches-1532/" target="_blank">Ver esta oferta en la web &rarr;</a>
       </div>
     </div>
   </div>
-</div></div><div class="hotel-panel " id="hp-sonesta_bogot_">
-          <div class="subtabs"><button class="subtab active" onclick="switchDetail('sonesta_bogot_','det-sonesta_bogot_-1528',this)"><span class=nd></span>COMPRA ANTICIPADA 7 DÍAS</button><button class="subtab " onclick="switchDetail('sonesta_bogot_','det-sonesta_bogot_-1531',this)"><span class=nd></span>MINIMA ESTADÍA 3 NOCHES</button></div><div class="detail active" id="det-sonesta_bogot_-1528">
+</div><div class="detail " id="det-arsenal_hotel-es-33af0f">
   <div class="dcard">
     <div class="dcard-top">
-      <div>
-        <h3>Compra Anticipada 7 días Hotel Sonesta Bogotá</h3>
-        <div class="titular">¡ANTICIPA TU ESTADÍA Y OBTÉN 15% DE DESCUENTO!</div>
+      <div><h3>La Magia de Cartagena Incluye una Noche Gratis Arsenal Hotel</h3>
+        <div class="titular">PAGA 2 NOCHES Y QUÉDATE 3</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#fef0e7;color:#a8480b">Promo Especial</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
+      </div>
+      <div class="right"><div class="disc-big">—</div><div class="disc-lbl">Descuento</div></div>
+    </div>
+    <div class="dcard-body">
+      <div class="ddesc">GHL Arsenal Hotel Aprovecha nuestra oferta exclusiva Paga 2 Noches y Quédate 3 en el Hotel GHL Arsenal. Beneficios de la promoción Hospédate 3 noches y paga solo 2 Estadía mínima: 3 noches Disponibilidad limitada No acumulable con otras promociones Reserva ahora y asegura esta oferta exclusiva para disfrutar Cartagena en su mejor temporada.</div>
+      <div class="dgrid">
+        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">18/06/2026 &rarr; 30/11/2026</div></div>
+        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Promo Especial</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">556.340 COP</div></div>
+        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">—</div></div>
+      </div>
+      <div class="dfoot">
+        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>33af0f</b> · Fuente: web oficial GHL</div>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/arsenal/cartagena-noche-gratis-promo/" target="_blank">Ver esta oferta en la web &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div></div><div class="langview " id="hl-arsenal_hotel-en"><div class="subtabs" id="subs-arsenal_hotel-en"><button class="subtab active" onclick="switchOffer('arsenal_hotel-en','det-arsenal_hotel-en-1526',this)"><span class=nd></span>EARLY BOOKING 60 DAYS</button><button class="subtab " onclick="switchOffer('arsenal_hotel-en','det-arsenal_hotel-en-1527',this)"><span class=nd></span>EARLY BOOKING 30 DAYS</button><button class="subtab " onclick="switchOffer('arsenal_hotel-en','det-arsenal_hotel-en-1532',this)"><span class=nd></span>MINIMUM 3 NIGHTS</button><button class="subtab " onclick="switchOffer('arsenal_hotel-en','det-arsenal_hotel-en-33af0f',this)"><span class=nd></span>LA MAGIA DE CARTAGENA INCLUYE UNA NOCHE GRATIS</button></div><div class="detail active" id="det-arsenal_hotel-en-1526">
+  <div class="dcard">
+    <div class="dcard-top">
+      <div><h3>Arsenal Hotel, Early Booking 60 days</h3>
+        <div class="titular">EARLY BOOKING 60 DAYS 12% OFF</div>
         <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
       </div>
-      <div class="right"><div class="disc-big">15%</div><div class="disc-lbl">Descuento</div></div>
+      <div class="right"><div class="disc-big">12%</div><div class="disc-lbl">Descuento</div></div>
     </div>
     <div class="dcard-body">
-      <div class="ddesc">¡La mejor forma de disfrutar Bogotá es adelantándose! Al reservar con 7 días de antelación, recibes un 15% de descuento en tu próxima estadía.</div>
+      <div class="ddesc">Arsenal Hotel “Book 60 days before your stay and get a 12% discount. If you sign up for GHL Plus, you’ll receive an additional discount</div>
       <div class="dgrid">
-        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">25/06/2026 &rarr; 31/03/2028</div></div>
+        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">17/08/2026 &rarr; 22/12/2027</div></div>
         <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Compra Anticipada</div></div>
-        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">356.446 COP</div></div>
-        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">15%</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">No publicado</div></div>
+        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">12%</div></div>
       </div>
       <div class="dfoot">
-        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1528</b> · Fuente: web oficial GHL</div>
-        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/ghlsonbogota/compra-anticipada-7-dias-1528/" target="_blank">Ver esta oferta en la web &rarr;</a>
+        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1526</b> · Fuente: web oficial GHL</div>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/en/promotions/arsenal/early-booking-60-days/" target="_blank">Ver esta oferta en la web &rarr;</a>
       </div>
     </div>
   </div>
-</div><div class="detail " id="det-sonesta_bogot_-1531">
+</div><div class="detail " id="det-arsenal_hotel-en-1527">
   <div class="dcard">
     <div class="dcard-top">
-      <div>
-        <h3>Minima estadía 3 Noches Hotel Sonesta Bogotá</h3>
-        <div class="titular">QUÉDATE 3 NOCHES Y AHORRA UN 7%</div>
-        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#e8f5ee;color:#0f6e56">Minima Estadia</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
+      <div><h3>Arsenal Hotel, Early Booking 30 Days</h3>
+        <div class="titular">EARLY BOOKING 30 DAYS 10% OFF</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
       </div>
-      <div class="right"><div class="disc-big">7%</div><div class="disc-lbl">Descuento</div></div>
+      <div class="right"><div class="disc-big">10%</div><div class="disc-lbl">Descuento</div></div>
     </div>
     <div class="dcard-body">
-      <div class="ddesc">Quédate 3 Noches y Ahorra un 7% Regálate el tiempo que mereces para explorarBogotá a tu propio ritmo. Reserva una estadía mínima de tres noches y recibe 7% de descuento en tu tarifa.</div>
+      <div class="ddesc">Arsenal Hotel “Book 30 days before your stay and get a 10% discount. If you sign up for GHL Plus, you’ll receive an additional discount</div>
       <div class="dgrid">
-        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">18/06/2026 &rarr; 31/03/2030</div></div>
-        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Minima Estadia</div></div>
-        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">356.446 COP</div></div>
-        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">7%</div></div>
+        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">18/06/2026 &rarr; 31/05/2027</div></div>
+        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Compra Anticipada</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">No publicado</div></div>
+        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">10%</div></div>
       </div>
       <div class="dfoot">
-        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1531</b> · Fuente: web oficial GHL</div>
-        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/ghlsonbogota/minima-estadia-3-noches-1531/" target="_blank">Ver esta oferta en la web &rarr;</a>
+        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1527</b> · Fuente: web oficial GHL</div>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/en/promotions/arsenal/early-booking-30-days/" target="_blank">Ver esta oferta en la web &rarr;</a>
       </div>
     </div>
   </div>
-</div></div>
+</div><div class="detail " id="det-arsenal_hotel-en-1532">
+  <div class="dcard">
+    <div class="dcard-top">
+      <div><h3>Arsenal Hotel, Minimum 3 Nights</h3>
+        <div class="titular">STAY MINIMUM 3 NIGHTS AND GET -18%OFF</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#e8f5ee;color:#0f6e56">Minima Estadia</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
+      </div>
+      <div class="right"><div class="disc-big">18%</div><div class="disc-lbl">Descuento</div></div>
+    </div>
+    <div class="dcard-body">
+      <div class="ddesc">Arsenal Hotel Enjoy your stay for a minimum of three nights. An exclusive experience. An 18% discount. Experience Cartagena with elegance in every detail and extend your rest with benefits that make the difference. And if you sign up for GHLPlus, you’ll receive an additional discount.</div>
+      <div class="dgrid">
+        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">18/06/2026 &rarr; 31/05/2027</div></div>
+        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Minima Estadia</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">No publicado</div></div>
+        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">18%</div></div>
+      </div>
+      <div class="dfoot">
+        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1532</b> · Fuente: web oficial GHL</div>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/en/promotions/arsenal/minimum-mights/" target="_blank">Ver esta oferta en la web &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div><div class="detail " id="det-arsenal_hotel-en-33af0f"><div class="na-card"><div class="na-ico">🌐</div><p>La oferta <b>La Magia de Cartagena Incluye una Noche Gratis Arsenal Hotel</b> no está publicada en <b>inglés</b> en la web oficial.</p><p class="muted" style="margin-top:6px">La página en inglés devuelve error 404.</p></div></div></div></div><div class="hotel-panel " id="hp-makani_luxury_wanderlust"><div class="langtabs"><button class="langtab active" onclick="switchHotelLang('makani_luxury_wanderlust','es',this)">🇪🇸 Español</button><button class="langtab " onclick="switchHotelLang('makani_luxury_wanderlust','en',this)">🇬🇧 English</button></div><div class="langview active" id="hl-makani_luxury_wanderlust-es"><div class="subtabs" id="subs-makani_luxury_wanderlust-es"><button class="subtab active" onclick="switchOffer('makani_luxury_wanderlust-es','det-makani_luxury_wanderlust-es-436152641',this)"><span class=nd></span>+57 601 3139330</button></div><div class="detail active" id="det-makani_luxury_wanderlust-es-436152641">
+  <div class="dcard">
+    <div class="dcard-top">
+      <div><h3>Experiencia dos noches en Makani Hotel Makani Luxury Wanderlust</h3>
+        <div class="titular">+57 601 3139330</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#fef0e7;color:#a8480b">Promo Especial</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
+      </div>
+      <div class="right"><div class="disc-big">—</div><div class="disc-lbl">Descuento</div></div>
+    </div>
+    <div class="dcard-body">
+      <div class="ddesc">Sin descripción disponible.</div>
+      <div class="dgrid">
+        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">No publicada</div></div>
+        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Promo Especial</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">No publicado</div></div>
+        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">—</div></div>
+      </div>
+      <div class="dfoot">
+        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>436152641</b> · Fuente: web oficial GHL</div>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/makani/experiencia-dos-noches-en-436152641/" target="_blank">Ver esta oferta en la web &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div></div><div class="langview " id="hl-makani_luxury_wanderlust-en"><div class="subtabs" id="subs-makani_luxury_wanderlust-en"><button class="subtab active" onclick="switchOffer('makani_luxury_wanderlust-en','det-makani_luxury_wanderlust-en-436152641',this)"><span class=nd></span>SEASON ESCAPE</button></div><div class="detail active" id="det-makani_luxury_wanderlust-en-436152641">
+  <div class="dcard">
+    <div class="dcard-top">
+      <div><h3>Hotel Makani Luxury Wanderlust, Season Escape</h3>
+        <div class="titular">BECAUSE THE GAME IS BETTER ENJOYED FROM PARADISE.</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#fef0e7;color:#a8480b">Promo Especial</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
+      </div>
+      <div class="right"><div class="disc-big">—</div><div class="disc-lbl">Descuento</div></div>
+    </div>
+    <div class="dcard-body">
+      <div class="ddesc">Makani Luxury Wanderlust Two nights in your private villa while the world lives the World Cup. Rest, unwind, and catch the matches at our beach club whenever you feel like it. Includes Check-in with a welcome drink Breakfast included each morning 2-for-1 handcrafted margaritas</div>
+      <div class="dgrid">
+        <div class="dfield"><div class="fl">Vigencia · Oferta válida entre</div><div class="fv">18/06/2026 &rarr; 31/07/2026</div></div>
+        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Promo Especial</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">No publicado</div></div>
+        <div class="dfield"><div class="fl">Descuento / Beneficio</div><div class="fv">—</div></div>
+      </div>
+      <div class="dfoot">
+        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>436152641</b> · Fuente: web oficial GHL</div>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/en/promotions/makani/season-escape-436152641/" target="_blank">Ver esta oferta en la web &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div></div></div>
 
   <div class="foot-note">
-    Dashboard generado automáticamente desde la web oficial GHL Hoteles · ghlhoteles.com/es/ofertas<br>
-    La <b>vigencia</b> corresponde al rango "Oferta válida entre" publicado en cada oferta.
+    Dashboard generado automáticamente desde la web oficial GHL Hoteles · ghlhoteles.com/es/ofertas y /en/offers<br>
+    La <b>vigencia</b> corresponde al rango "Oferta válida entre" publicado. Algunas ofertas no tienen versión en inglés publicada en la web.
   </div>
 </div>
 <script>
@@ -353,10 +320,21 @@ function switchHotel(id,btn){
   document.querySelectorAll('.hotel-tab').forEach(b=>b.classList.remove('active'));
   document.getElementById('hp-'+id).classList.add('active');btn.classList.add('active');
 }
-function switchDetail(hid,did,btn){
-  const panel=document.getElementById('hp-'+hid);
-  panel.querySelectorAll('.detail').forEach(d=>d.classList.remove('active'));
-  panel.querySelectorAll('.subtab').forEach(b=>b.classList.remove('active'));
-  document.getElementById(did).classList.add('active');btn.classList.add('active');
+function switchMasterLang(lang,btn){
+  ['es','en'].forEach(l=>document.getElementById('master-'+l).classList.remove('active'));
+  btn.parentElement.querySelectorAll('.langtab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('master-'+lang).classList.add('active');btn.classList.add('active');
+}
+function switchHotelLang(hid,lang,btn){
+  ['es','en'].forEach(l=>{const v=document.getElementById('hl-'+hid+'-'+l); if(v) v.classList.remove('active');});
+  btn.parentElement.querySelectorAll('.langtab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('hl-'+hid+'-'+lang).classList.add('active');btn.classList.add('active');
+}
+function switchOffer(scope,detId,btn){
+  const subs=document.getElementById('subs-'+scope);
+  const view=subs.parentElement;
+  view.querySelectorAll('.detail').forEach(d=>d.classList.remove('active'));
+  subs.querySelectorAll('.subtab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(detId).classList.add('active');btn.classList.add('active');
 }
 </script></body></html>
