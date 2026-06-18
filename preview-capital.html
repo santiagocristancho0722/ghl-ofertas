@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dashboard Ofertas GHL — 2026-06-18 14:50</title><style>
+:root{
+  --navy:#023859;--mid:#2A5E95;--blue:#6399BA;--ink:#1a2533;--gray:#6b7785;
+  --line:#e4e9f0;--bg:#eef2f7;--white:#fff;
+  --ok:#1a7a4a;--ok-bg:#e7f5ec;--amber:#b87503;--amber-bg:#fdf3e3;
+  --red:#b0281a;--red-bg:#fbeae8;--muted:#aab4c0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);font-size:13px;line-height:1.5}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px 64px}
+/* Header */
+.hdr{background:linear-gradient(135deg,#023859 0%,#04507e 100%);color:#fff;padding:30px 0 26px;margin-bottom:0}
+.hdr-in{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px}
+.hdr h1{font-family:'DM Serif Display',serif;font-size:30px;font-weight:400;line-height:1.1}
+.hdr h1 b{color:#8fc1de;font-weight:400}
+.hdr .meta{text-align:right;font-size:12px;color:#a9cbe0;line-height:1.7}
+.hdr .meta b{color:#fff;font-weight:600}
+/* KPI cards */
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:-30px 0 28px;position:relative;z-index:5}
+.kpi{background:var(--white);border-radius:12px;padding:18px 18px 16px;box-shadow:0 6px 22px rgba(2,56,89,.10);border-top:3px solid var(--line)}
+.kpi .v{font-size:38px;font-weight:700;line-height:1;letter-spacing:-1px}
+.kpi .l{font-size:10.5px;color:var(--gray);text-transform:uppercase;letter-spacing:.7px;margin-top:7px;font-weight:600}
+.kpi.k-act{border-top-color:var(--navy)}.kpi.k-act .v{color:var(--navy)}
+.kpi.k-new{border-top-color:var(--ok)}.kpi.k-new .v{color:var(--ok)}
+.kpi.k-del{border-top-color:var(--red)}.kpi.k-del .v{color:var(--red)}
+.kpi.k-chg{border-top-color:var(--amber)}.kpi.k-chg .v{color:var(--amber)}
+.kpi.k-scan{border-top-color:var(--blue)}.kpi.k-scan .v{color:var(--blue)}
+/* Section titles */
+.sec-title{font-size:15px;font-weight:700;color:var(--navy);margin:30px 0 14px;display:flex;align-items:center;gap:9px}
+.sec-title .tag{font-size:10px;font-weight:600;color:var(--gray);background:var(--white);border:1px solid var(--line);padding:2px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+/* Master table */
+.tbl-card{background:var(--white);border-radius:12px;border:1px solid var(--line);overflow:hidden;box-shadow:0 2px 10px rgba(2,56,89,.05)}
+table.master{width:100%;border-collapse:collapse;font-size:12.5px}
+.master thead th{background:#f6f9fc;color:var(--mid);font-size:10px;text-transform:uppercase;letter-spacing:.6px;font-weight:700;text-align:left;padding:12px 14px;border-bottom:2px solid var(--line);white-space:nowrap}
+.master tbody td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+.master tbody tr:last-child td{border-bottom:none}
+.master tbody tr:hover{background:#f9fbfd}
+.m-offer{font-weight:600;color:var(--navy);font-size:12.5px}
+.m-hotel{font-size:11px;color:var(--gray);margin-top:1px}
+.cat-pill{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.disc-pill{display:inline-block;background:var(--navy);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:6px}
+.ben-pill{display:inline-block;background:var(--ok-bg);color:var(--ok);font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px}
+.muted{color:var(--muted);font-style:italic;font-size:11.5px}
+.date-main{font-weight:600;color:var(--ink);font-size:12px}
+.date-sub{font-size:10.5px;color:var(--gray)}
+.estado{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.3px}
+.e-new{background:var(--ok-bg);color:var(--ok)}
+.e-chg{background:var(--amber-bg);color:var(--amber)}
+.e-keep{background:#eef1f5;color:var(--gray)}
+.e-dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.ver-link{display:inline-flex;align-items:center;gap:5px;color:var(--mid);font-weight:600;font-size:11.5px;text-decoration:none;white-space:nowrap;border:1px solid var(--line);padding:5px 11px;border-radius:7px;transition:all .15s}
+.ver-link:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+/* Hotel tabs */
+.hotel-bar{display:flex;gap:4px;margin:30px 0 0;border-bottom:2px solid var(--line);overflow-x:auto}
+.hotel-tab{padding:11px 20px;font-size:13px;font-weight:600;color:var(--gray);background:none;border:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .15s}
+.hotel-tab:hover{color:var(--navy)}
+.hotel-tab.active{color:var(--navy);border-bottom-color:var(--navy)}
+.hotel-panel{display:none;padding-top:22px}.hotel-panel.active{display:block}
+/* Sub-tabs (per offer) */
+.subtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.subtab{display:flex;align-items:center;gap:7px;padding:8px 14px;font-size:12px;font-weight:600;color:var(--gray);background:var(--white);border:1.5px solid var(--line);border-radius:9px;cursor:pointer;transition:all .15s}
+.subtab:hover{border-color:var(--blue);color:var(--navy)}
+.subtab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.subtab .nd{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.subtab.active .nd{box-shadow:0 0 0 2px rgba(255,255,255,.4)}
+.detail{display:none}.detail.active{display:block}
+/* Detail card */
+.dcard{background:var(--white);border-radius:14px;border:1px solid var(--line);overflow:hidden;box-shadow:0 3px 14px rgba(2,56,89,.06)}
+.dcard-top{padding:22px 26px;background:linear-gradient(135deg,#f6f9fc,#eef4f9);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+.dcard-top h3{font-size:20px;color:var(--navy);font-weight:700;line-height:1.25}
+.dcard-top .titular{font-size:12.5px;color:var(--mid);font-weight:600;margin-top:6px;text-transform:uppercase;letter-spacing:.4px}
+.dcard-top .right{text-align:right;flex:none}
+.dcard-top .disc-big{font-size:30px;font-weight:800;color:var(--navy);line-height:1}
+.dcard-top .disc-lbl{font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.dcard-body{padding:22px 26px}
+.dgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:18px}
+.dfield{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:13px 16px}
+.dfield .fl{font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px}
+.dfield .fv{font-size:13.5px;color:var(--ink);font-weight:600}
+.dfield .fv.sm{font-size:12px;font-weight:500}
+.ddesc{font-size:13.5px;color:#33414f;line-height:1.65;background:#f8fafc;border-left:3px solid var(--blue);border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:18px}
+.dfoot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:7px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:11px 20px;border-radius:9px;transition:all .15s}
+.btn-primary:hover{background:#04507e}
+.foot-note{text-align:center;color:var(--gray);font-size:11px;margin-top:34px;line-height:1.7}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.dgrid{grid-template-columns:1fr}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"></head><body>
+<div class="hdr"><div class="hdr-in">
+  <h1>Dashboard de Ofertas <b>· GHL Hotel Capital</b></h1>
+  <div class="meta">Último escaneo: <b>2026-06-18 14:50</b><br>Análisis anterior: —<br>Frecuencia: <b>Semanal</b></div>
+</div></div>
+<div class="wrap">
+  <div class="kpis">
+    <div class="kpi k-act"><div class="v">5</div><div class="l">Ofertas activas</div></div>
+    <div class="kpi k-new"><div class="v">5</div><div class="l">Nuevas esta semana</div></div>
+    <div class="kpi k-del"><div class="v">0</div><div class="l">Eliminadas esta semana</div></div>
+    <div class="kpi k-chg"><div class="v">0</div><div class="l">Con cambios</div></div>
+    <div class="kpi k-scan"><div class="v">1</div><div class="l">Escaneos realizados</div></div></div>
+
+  <div class="sec-title">Consolidado de ofertas activas <span class="tag">5 ofertas</span></div>
+  
+    <div class="tbl-card">
+      <table class="master">
+        <thead><tr>
+          <th>Oferta / Hotel</th><th>Categoría</th><th>Descuento / Beneficio</th>
+          <th>Vigencia</th><th>Fechas de viaje</th><th>Estado</th><th>Detalle</th>
+        </tr></thead>
+        <tbody><tr>
+      <td><div class="m-offer">Fin de Semana Perfecto GHL Capital</div><div class="m-hotel">GHL Hotel Capital</div></td>
+      <td><span class="cat-pill" style="background:#f0eafb;color:#5a2d9a">Fin de Semana</span></td>
+      <td><span class="disc-pill">15%</span></td>
+      <td><div class="date-main">18/06/2026 &rarr; 31/03/2028</div><div class="date-sub">Vigencia publicada</div></td>
+      <td><span class="muted">Motor de reservas</span></td>
+      <td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td>
+      <td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/tarifa-fin-de-semana-1524/" target="_blank">Ver oferta &rarr;</a></td>
+    </tr><tr>
+      <td><div class="m-offer">Máximo Ahorro Garantizado GHL Capital</div><div class="m-hotel">GHL Hotel Capital</div></td>
+      <td><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span></td>
+      <td><span class="disc-pill">20%</span></td>
+      <td><div class="date-main">18/07/2026 &rarr; 31/03/2028</div><div class="date-sub">Vigencia publicada</div></td>
+      <td><span class="muted">Motor de reservas</span></td>
+      <td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td>
+      <td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/compra-anticipada-30-dias-1527/" target="_blank">Ver oferta &rarr;</a></td>
+    </tr><tr>
+      <td><div class="m-offer">Tu Recompensa por Planear GHL Capital</div><div class="m-hotel">GHL Hotel Capital</div></td>
+      <td><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span></td>
+      <td><span class="disc-pill">15%</span></td>
+      <td><div class="date-main">03/07/2026 &rarr; 31/03/2028</div><div class="date-sub">Vigencia publicada</div></td>
+      <td><span class="muted">Motor de reservas</span></td>
+      <td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td>
+      <td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/compra-anticipada-15-dias-1528/" target="_blank">Ver oferta &rarr;</a></td>
+    </tr><tr>
+      <td><div class="m-offer">¡Lánzate a Bogotá! GHL Capital</div><div class="m-hotel">GHL Hotel Capital</div></td>
+      <td><span class="cat-pill" style="background:#fdecea;color:#b0281a">Ultimo Minuto</span></td>
+      <td><span class="disc-pill">15%</span></td>
+      <td><div class="date-main">18/06/2026 &rarr; 31/03/2028</div><div class="date-sub">Vigencia publicada</div></td>
+      <td><span class="muted">Motor de reservas</span></td>
+      <td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td>
+      <td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/ultimo-minuto-3-dias-1529/" target="_blank">Ver oferta &rarr;</a></td>
+    </tr><tr>
+      <td><div class="m-offer">Quédate Más, Paga Menos GHL Capital</div><div class="m-hotel">GHL Hotel Capital</div></td>
+      <td><span class="cat-pill" style="background:#e8f5ee;color:#0f6e56">Minima Estadia</span></td>
+      <td><span class="disc-pill">15%</span></td>
+      <td><div class="date-main">18/06/2026 &rarr; 31/03/2028</div><div class="date-sub">Vigencia publicada</div></td>
+      <td><span class="muted">Motor de reservas</span></td>
+      <td><span class="estado e-new"><span class="e-dot"></span>Nueva</span></td>
+      <td><a class="ver-link" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/minima-estadia-3-noches-1531/" target="_blank">Ver oferta &rarr;</a></td>
+    </tr></tbody>
+      </table>
+    </div>
+
+  <div class="sec-title">Detalle por hotel <span class="tag">Información desglosada</span></div>
+  <div class="hotel-bar"><button class="hotel-tab active" onclick="switchHotel('ghl_hotel_capital',this)">GHL Hotel Capital</button></div>
+  <div class="hotel-panel active" id="hp-ghl_hotel_capital">
+          <div class="subtabs"><button class="subtab active" onclick="switchDetail('ghl_hotel_capital','det-ghl_hotel_capital-1524',this)"><span class=nd></span>FIN DE SEMANA PERFECTO</button><button class="subtab " onclick="switchDetail('ghl_hotel_capital','det-ghl_hotel_capital-1527',this)"><span class=nd></span>MÁXIMO AHORRO GARANTIZADO</button><button class="subtab " onclick="switchDetail('ghl_hotel_capital','det-ghl_hotel_capital-1528',this)"><span class=nd></span>TU RECOMPENSA POR PLANEAR</button><button class="subtab " onclick="switchDetail('ghl_hotel_capital','det-ghl_hotel_capital-1529',this)"><span class=nd></span>¡LÁNZATE A BOGOTÁ!</button><button class="subtab " onclick="switchDetail('ghl_hotel_capital','det-ghl_hotel_capital-1531',this)"><span class=nd></span>QUÉDATE MÁS, PAGA MENOS</button></div><div class="detail active" id="det-ghl_hotel_capital-1524">
+  <div class="dcard">
+    <div class="dcard-top">
+      <div>
+        <h3>Fin de Semana Perfecto GHL Capital</h3>
+        <div class="titular">PLAN FIN DE SEMANA: TU DESCANSO CON 15% MENOS</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#f0eafb;color:#5a2d9a">Fin de Semana</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
+      </div>
+      <div class="right"><div class="disc-big">15%</div><div class="disc-lbl">Descuento</div></div>
+    </div>
+    <div class="dcard-body">
+      <div class="ddesc">El descanso que mereces, al precio que te mereces. Escápate este fin de semana al GHL Hotel Capital y disfruta todo el confort, la gastronomía y la ubicación privilegiada de Bogotá con un 15% de descuento exclusivo. Porque el fin de semana perfecto empieza con la reserva correcta.</div>
+      <div class="dgrid">
+        <div class="dfield"><div class="fl">Fechas de vigencia (publicada)</div><div class="fv">18/06/2026 &rarr; 31/03/2028</div></div>
+        <div class="dfield"><div class="fl">Fechas de viaje (estadía)</div><div class="fv sm muted">Definidas en motor de reservas</div></div>
+        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Fin de Semana</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">351.000 COP</div></div>
+      </div>
+      <div class="dfoot">
+        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1524</b> · Fuente: web oficial GHL</div>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/tarifa-fin-de-semana-1524/" target="_blank">Ver esta oferta en la web &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div><div class="detail " id="det-ghl_hotel_capital-1527">
+  <div class="dcard">
+    <div class="dcard-top">
+      <div>
+        <h3>Máximo Ahorro Garantizado GHL Capital</h3>
+        <div class="titular">PLANIFICADOR INTELIGENTE: ANTICIPA +30 DÍAS Y AHORRA 20%</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
+      </div>
+      <div class="right"><div class="disc-big">20%</div><div class="disc-lbl">Descuento</div></div>
+    </div>
+    <div class="dcard-body">
+      <div class="ddesc">Nuestro descuento más grande del año, solo para quienes reservan con 30 días de anticipación. Un 20% off en tu estadía en el GHL Hotel Capital, más dinero en tu bolsillo para disfrutar todo lo que Bogotá tiene para ti. Reserva hoy, ahorra más. Así de simple.</div>
+      <div class="dgrid">
+        <div class="dfield"><div class="fl">Fechas de vigencia (publicada)</div><div class="fv">18/07/2026 &rarr; 31/03/2028</div></div>
+        <div class="dfield"><div class="fl">Fechas de viaje (estadía)</div><div class="fv sm muted">Definidas en motor de reservas</div></div>
+        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Compra Anticipada</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">360.000 COP</div></div>
+      </div>
+      <div class="dfoot">
+        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1527</b> · Fuente: web oficial GHL</div>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/compra-anticipada-30-dias-1527/" target="_blank">Ver esta oferta en la web &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div><div class="detail " id="det-ghl_hotel_capital-1528">
+  <div class="dcard">
+    <div class="dcard-top">
+      <div>
+        <h3>Tu Recompensa por Planear GHL Capital</h3>
+        <div class="titular">ANTICIPACIÓN +15 DÍAS: PLANEA Y AHORRA 15%</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#e8f1fb;color:#1a4a9a">Compra Anticipada</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
+      </div>
+      <div class="right"><div class="disc-big">15%</div><div class="disc-lbl">Descuento</div></div>
+    </div>
+    <div class="dcard-body">
+      <div class="ddesc">Planear tiene sus ventajas, y esta es una muy buena. Reserva tu estadía en el GHL Hotel Capital con 15 días de anticipación y recibe un 15% de descuento como recompensa por tu buena decisión. Planeaste bien. Ahora relájate, lo demás corre por nuestra cuenta.</div>
+      <div class="dgrid">
+        <div class="dfield"><div class="fl">Fechas de vigencia (publicada)</div><div class="fv">03/07/2026 &rarr; 31/03/2028</div></div>
+        <div class="dfield"><div class="fl">Fechas de viaje (estadía)</div><div class="fv sm muted">Definidas en motor de reservas</div></div>
+        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Compra Anticipada</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">360.000 COP</div></div>
+      </div>
+      <div class="dfoot">
+        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1528</b> · Fuente: web oficial GHL</div>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/compra-anticipada-15-dias-1528/" target="_blank">Ver esta oferta en la web &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div><div class="detail " id="det-ghl_hotel_capital-1529">
+  <div class="dcard">
+    <div class="dcard-top">
+      <div>
+        <h3>¡Lánzate a Bogotá! GHL Capital</h3>
+        <div class="titular">ÚLTIMO MINUTO: DECIDE RÁPIDO Y AHORRA 15%</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#fdecea;color:#b0281a">Ultimo Minuto</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
+      </div>
+      <div class="right"><div class="disc-big">15%</div><div class="disc-lbl">Descuento</div></div>
+    </div>
+    <div class="dcard-body">
+      <div class="ddesc">¿Plan de último momento? ¡Mejor! Reserva hoy, llega hoy y vive Bogotá como se debe: sin itinerarios rígidos, con todo el confort del GHL Hotel Capital y un 15% de descuento para que la aventura espontánea salga aún mejor. Las mejores historias empiezan con una reserva de último minuto.</div>
+      <div class="dgrid">
+        <div class="dfield"><div class="fl">Fechas de vigencia (publicada)</div><div class="fv">18/06/2026 &rarr; 31/03/2028</div></div>
+        <div class="dfield"><div class="fl">Fechas de viaje (estadía)</div><div class="fv sm muted">Definidas en motor de reservas</div></div>
+        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Ultimo Minuto</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">351.000 COP</div></div>
+      </div>
+      <div class="dfoot">
+        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1529</b> · Fuente: web oficial GHL</div>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/ultimo-minuto-3-dias-1529/" target="_blank">Ver esta oferta en la web &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div><div class="detail " id="det-ghl_hotel_capital-1531">
+  <div class="dcard">
+    <div class="dcard-top">
+      <div>
+        <h3>Quédate Más, Paga Menos GHL Capital</h3>
+        <div class="titular">4 NOCHES, 15% MENOS. MÁS TIEMPO PARA VIVIR BOGOTÁ</div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center"><span class="cat-pill" style="background:#e8f5ee;color:#0f6e56">Minima Estadia</span><span class="estado e-new"><span class="e-dot"></span>Nueva</span></div>
+      </div>
+      <div class="right"><div class="disc-big">15%</div><div class="disc-lbl">Descuento</div></div>
+    </div>
+    <div class="dcard-body">
+      <div class="ddesc">Entre más tiempo pases en el GHL Hotel Capital, más ahorras. Reserva 4 noches o más y obtén un 15% de descuento en toda tu estadía. Más comodidad, más Bogotá, más experiencias, y tu bolsillo lo nota. ¡No dejes pasar esta oportunidad!</div>
+      <div class="dgrid">
+        <div class="dfield"><div class="fl">Fechas de vigencia (publicada)</div><div class="fv">18/06/2026 &rarr; 31/03/2028</div></div>
+        <div class="dfield"><div class="fl">Fechas de viaje (estadía)</div><div class="fv sm muted">Definidas en motor de reservas</div></div>
+        <div class="dfield"><div class="fl">Categoría de la oferta</div><div class="fv">Minima Estadia</div></div>
+        <div class="dfield"><div class="fl">Tarifa desde</div><div class="fv">390.000 COP</div></div>
+      </div>
+      <div class="dfoot">
+        <div class="muted" style="font-style:normal;color:var(--gray)">ID oferta: <b>1531</b> · Fuente: web oficial GHL</div>
+        <a class="btn-primary" href="https://www.ghlhoteles.com/es/promociones/ghlcapital/minima-estadia-3-noches-1531/" target="_blank">Ver esta oferta en la web &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+  <div class="foot-note">
+    Dashboard generado automáticamente desde la web oficial GHL Hoteles · ghlhoteles.com/es/ofertas<br>
+    Las <b>fechas de viaje</b> se confirman en el motor de reservas al momento de cotizar.
+  </div>
+</div>
+<script>
+function switchHotel(id,btn){
+  document.querySelectorAll('.hotel-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.hotel-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('hp-'+id).classList.add('active');btn.classList.add('active');
+}
+function switchDetail(hid,did,btn){
+  const panel=document.getElementById('hp-'+hid);
+  panel.querySelectorAll('.detail').forEach(d=>d.classList.remove('active'));
+  panel.querySelectorAll('.subtab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(did).classList.add('active');btn.classList.add('active');
+}
+</script></body></html>
