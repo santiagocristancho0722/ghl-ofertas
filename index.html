@@ -60,6 +60,9 @@ table.master{width:100%;border-collapse:collapse;font-size:12.5px}
 tr.row-removed td{background:#fdf7f6}
 .add-date{font-size:11.5px;color:var(--ok);font-weight:600}
 tr.row-new td{background:#f5faf6}
+.chg-date{font-size:11.5px;color:var(--amber);font-weight:600}
+tr.row-chg td{background:#fdfaf3}
+.chg-chip{display:inline-block;background:var(--amber-bg);color:var(--amber);font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:5px;margin:2px 4px 2px 0}
 .m-offer{font-weight:600;color:var(--navy);font-size:12.5px}
 .cat-pill{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
 .disc-pill{display:inline-block;background:var(--navy);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:6px}
@@ -122,13 +125,14 @@ tr.row-new td{background:#f5faf6}
     <div class="kpi k-act"><div class="v">89</div><div class="l">Ofertas activas</div></div>
     <div class="kpi k-new"><div class="v">5</div><div class="l">Nuevas esta semana</div></div>
     <div class="kpi k-del"><div class="v">0</div><div class="l">Eliminadas esta semana</div></div>
-    <div class="kpi k-chg"><div class="v">1</div><div class="l">Con cambios</div></div>
+    <div class="kpi k-chg"><div class="v">0</div><div class="l">Con cambios</div></div>
     <div class="kpi k-scan"><div class="v">3</div><div class="l">Escaneos realizados</div></div></div>
 
   <div class="maintabs">
     <button class="maintab active" onclick="switchMain('mp-consolidado',this)">Consolidado de ofertas activas <span class="tag">89</span></button>
     <button class="maintab" onclick="switchMain('mp-detalle',this)">Detalle por hotel <span class="tag">45</span></button>
     <button class="maintab" onclick="switchMain('mp-nuevas',this)">Nuevas esta semana <span class="tag">5</span></button>
+    <button class="maintab" onclick="switchMain('mp-cambios',this)">Con cambios <span class="tag">0</span></button>
     <button class="maintab" onclick="switchMain('mp-eliminadas',this)">Ofertas eliminadas <span class="tag">15</span></button>
   </div>
 
@@ -2374,6 +2378,13 @@ tr.row-new td{background:#f5faf6}
     <div class="no-results" id="new-noresults">Sin resultados para los filtros seleccionados.</div>
   </div>
 
+  <div class="mainpanel" id="mp-cambios">
+    <p style="color:var(--gray);font-size:12.5px;margin-bottom:14px">Ofertas que ya existían pero cuyo contenido cambió respecto al escaneo anterior (descuento, título, titular o descripción).</p>
+    <div class="filterbar"><div class="search-wrap"><input id="chg-search" placeholder="Buscar hotel, oferta, ciudad o país…" oninput="applyScope('chg')"></div><div class="country-tabs"><button class="ctab active" data-scope="chg" data-country="all" onclick="setCountry(this)">Todos</button><button class="ctab" data-scope="chg" data-country="Colombia" onclick="setCountry(this)">Colombia</button><button class="ctab" data-scope="chg" data-country="Perú" onclick="setCountry(this)">Perú</button><button class="ctab" data-scope="chg" data-country="Chile" onclick="setCountry(this)">Chile</button><button class="ctab" data-scope="chg" data-country="Ecuador" onclick="setCountry(this)">Ecuador</button><button class="ctab" data-scope="chg" data-country="Guatemala" onclick="setCountry(this)">Guatemala</button></div><select id="chg-city" class="city-sel" onchange="applyScope('chg')"><option value="all">Todas las ciudades</option><option value="Antofagasta">Antofagasta</option><option value="Arequipa">Arequipa</option><option value="Bogotá">Bogotá</option><option value="Bucaramanga">Bucaramanga</option><option value="Calama">Calama</option><option value="Cali">Cali</option><option value="Cartagena">Cartagena</option><option value="Cusco">Cusco</option><option value="Ibagué">Ibagué</option><option value="Lima">Lima</option><option value="Loja">Loja</option><option value="Medellín">Medellín</option><option value="Montería">Montería</option><option value="Osorno">Osorno</option><option value="Pereira">Pereira</option><option value="Puno">Puno</option><option value="Quetzaltenango">Quetzaltenango</option><option value="San Andrés">San Andrés</option><option value="Santa Marta">Santa Marta</option><option value="Villarrica">Villarrica</option><option value="Villavicencio">Villavicencio</option><option value="Yopal">Yopal</option><option value="Yucay">Yucay</option></select></div>
+    <div class="empty-state">No se detectaron ofertas con cambios de contenido en el último escaneo.</div>
+    <div class="no-results" id="chg-noresults">Sin resultados para los filtros seleccionados.</div>
+  </div>
+
   <div class="mainpanel" id="mp-eliminadas">
     <p style="color:var(--gray);font-size:12.5px;margin-bottom:14px">Ofertas que estaban activas en un escaneo anterior y dejaron de existir (página 404). Se registran de forma acumulada con la fecha en que se detectó la baja.</p>
     <div class="filterbar"><div class="search-wrap"><input id="del-search" placeholder="Buscar hotel, oferta, ciudad o país…" oninput="applyScope('del')"></div><div class="country-tabs"><button class="ctab active" data-scope="del" data-country="all" onclick="setCountry(this)">Todos</button><button class="ctab" data-scope="del" data-country="Colombia" onclick="setCountry(this)">Colombia</button><button class="ctab" data-scope="del" data-country="Perú" onclick="setCountry(this)">Perú</button><button class="ctab" data-scope="del" data-country="Chile" onclick="setCountry(this)">Chile</button><button class="ctab" data-scope="del" data-country="Ecuador" onclick="setCountry(this)">Ecuador</button><button class="ctab" data-scope="del" data-country="Guatemala" onclick="setCountry(this)">Guatemala</button></div><select id="del-city" class="city-sel" onchange="applyScope('del')"><option value="all">Todas las ciudades</option><option value="Antofagasta">Antofagasta</option><option value="Arequipa">Arequipa</option><option value="Bogotá">Bogotá</option><option value="Bucaramanga">Bucaramanga</option><option value="Calama">Calama</option><option value="Cali">Cali</option><option value="Cartagena">Cartagena</option><option value="Cusco">Cusco</option><option value="Ibagué">Ibagué</option><option value="Lima">Lima</option><option value="Loja">Loja</option><option value="Medellín">Medellín</option><option value="Montería">Montería</option><option value="Osorno">Osorno</option><option value="Pereira">Pereira</option><option value="Puno">Puno</option><option value="Quetzaltenango">Quetzaltenango</option><option value="San Andrés">San Andrés</option><option value="Santa Marta">Santa Marta</option><option value="Villarrica">Villarrica</option><option value="Villavicencio">Villavicencio</option><option value="Yopal">Yopal</option><option value="Yucay">Yucay</option></select></div>
@@ -2393,7 +2404,7 @@ function switchMain(id,btn){
   document.querySelectorAll('.maintab').forEach(b=>b.classList.remove('active'));
   document.getElementById(id).classList.add('active');btn.classList.add('active');
 }
-const FSTATE = {cons:{country:'all'}, det:{country:'all'}, new:{country:'all'}, del:{country:'all'}};
+const FSTATE = {cons:{country:'all'}, det:{country:'all'}, new:{country:'all'}, chg:{country:'all'}, del:{country:'all'}};
 function toggleSec(head){ head.parentElement.classList.toggle('open'); }
 function setCountry(btn){
   const scope = btn.dataset.scope;
@@ -2442,6 +2453,13 @@ function applyScope(scope){
       tr.style.display = ok?'':'none'; if(ok) vis++;
     });
     const n=document.getElementById('new-noresults'); if(n) n.style.display = vis?'none':'block';
+  } else if(scope === 'chg'){
+    let vis = 0;
+    document.querySelectorAll('#mp-cambios .master tbody tr').forEach(tr=>{
+      const ok = match(tr.dataset.country, tr.dataset.city, tr.dataset.search);
+      tr.style.display = ok?'':'none'; if(ok) vis++;
+    });
+    const n=document.getElementById('chg-noresults'); if(n) n.style.display = vis?'none':'block';
   } else if(scope === 'del'){
     let vis = 0;
     document.querySelectorAll('#mp-eliminadas .master tbody tr').forEach(tr=>{
